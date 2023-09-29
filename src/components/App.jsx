@@ -1,17 +1,19 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { Home, Login, NotFound, Register } from 'pages';
-import { Header } from './Header/Header';
+import { Contacts, Home, Login, NotFound, Register } from 'pages';
+import { Layout } from './Layout';
 
 export const App = () => {
   return (
     <>
-      <Header />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="*" element={<NotFound />} />
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="login" element={<Login />} />
+          <Route path="register" element={<Register />} />
+          <Route path="contacts" element={<Contacts />} />
+          <Route path="*" element={<NotFound />} />
+        </Route>
       </Routes>
     </>
   );
