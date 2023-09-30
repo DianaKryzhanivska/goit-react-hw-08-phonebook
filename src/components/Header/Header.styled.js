@@ -8,6 +8,11 @@ export const HeaderWrapper = styled.div`
   justify-content: space-between;
 `;
 
+export const HeaderNavBox = styled.nav`
+  display: flex;
+  flex-direction: row;
+`;
+
 export const HeaderNav = styled.ul`
   display: flex;
   flex-direction: row;
