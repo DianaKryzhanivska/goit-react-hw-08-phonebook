@@ -18,7 +18,7 @@ export const Header = () => {
   const dispatch = useDispatch();
 
   const handleLogout = () => {
-    dispatch(logoutThunk);
+    dispatch(logoutThunk());
   };
 
   return (
@@ -43,7 +43,7 @@ export const Header = () => {
         </HeaderNavBox>
         {isLggedIn && (
           <HeaderInfo>
-            <AccountName>Name: {name}</AccountName>
+            <AccountName>{name}</AccountName>
             <LogoutButton onClick={handleLogout}>Logout</LogoutButton>
           </HeaderInfo>
         )}

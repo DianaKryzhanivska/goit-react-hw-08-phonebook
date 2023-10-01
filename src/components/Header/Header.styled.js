@@ -34,9 +34,7 @@ export const AccountName = styled.h3`
 `;
 
 export const LogoutButton = styled.button`
-  width: 70px;
-  height: 30px;
-  padding: 2px 4px;
+  padding: 3px 6px;
   font-size: 16px;
   cursor: pointer;
 `;

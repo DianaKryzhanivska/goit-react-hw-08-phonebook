@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { styled } from 'styled-components';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
@@ -10,6 +10,7 @@ export const Login = () => {
   const { handleSubmit, register } = useForm();
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const submit = data => {
     dispatch(loginThunk(data))
@@ -17,7 +18,8 @@ export const Login = () => {
       .then(res => {
         console.log(res);
         toast.success(`Welcome! ${res.user.name}`);
-        navigate('/contacts');
+        // navigate('/contacts');
+        navigate(location.state?.from ?? '/');
       })
       .catch(() => toast.error('Data is not valid'));
   };
@@ -34,7 +36,7 @@ export const Login = () => {
           Password
           <input {...register('password')} />
         </StyledLabel>
-        <input type="submit" />
+        <button>Login</button>
         <span>
           Don't have an account? Let's <Link to="/register">create it</Link>
         </span>

@@ -38,7 +38,7 @@ export const Register = () => {
           Password
           <input {...register('password')} />
         </StyledLabel>
-        <input type="submit" />
+        <button>Register</button>
         <span>
           You already have account? Let's <Link to="/login">sign in!</Link>
         </span>
