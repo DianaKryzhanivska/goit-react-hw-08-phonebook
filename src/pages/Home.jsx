@@ -1,9 +1,16 @@
 import React from 'react';
+import { styled } from 'styled-components';
 
 export const Home = () => {
   return (
     <>
-      <h1>This is HomePage</h1>
+      <HomeTitle>This is HomePage 🏡</HomeTitle>
     </>
   );
 };
+
+export const HomeTitle = styled.h1`
+  text-align: center;
+  color: #edf4f2;
+  margin-top: 100px;
+`;

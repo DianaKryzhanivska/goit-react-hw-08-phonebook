@@ -22,7 +22,7 @@ export const registerThunk = createAsyncThunk(
   async (credentials, thunkApi) => {
     try {
       const { data } = await goItApi.post('/users/signup', credentials);
-      console.log(data);
+      // console.log(data);
       setToken(data.token);
       return data;
     } catch (error) {
@@ -38,7 +38,7 @@ export const loginThunk = createAsyncThunk(
   async (credentials, { rejectWithValue }) => {
     try {
       const { data } = await goItApi.post('/users/login', credentials);
-      console.log(data);
+      // console.log(data);
       setToken(data.token);
       return data;
     } catch (error) {
@@ -70,10 +70,10 @@ export const refreshThunk = createAsyncThunk(
     try {
       setToken(savedToken);
       const { data } = await goItApi.get('/users/current');
-      console.log(data);
+      // console.log(data);
       return data;
     } catch (error) {
-      console.log(error.message);
+      // console.log(error.message);
     }
   }
 );

@@ -11,6 +11,7 @@ import {
   deleteContactThunk,
   fetchContacts,
 } from 'redux/contactForm/operations';
+import { toast } from 'react-toastify';
 
 export const ContactList = () => {
   const contacts = useSelector(selectContacts);
@@ -30,6 +31,7 @@ export const ContactList = () => {
 
   const handleDeleteContact = id => {
     dispatch(deleteContactThunk(id));
+    toast.success(`Contact deleted!`);
   };
 
   return (

@@ -15,7 +15,7 @@ export const Register = () => {
     dispatch(registerThunk(data))
       .unwrap()
       .then(res => {
-        console.log(res);
+        // console.log(res);
         toast.success(`Welcome! ${res.user.name}`);
         navigate('/contacts');
       })

@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import { styled } from 'styled-components';
 
 export const HeaderWrapper = styled.div`
@@ -37,4 +38,20 @@ export const LogoutButton = styled.button`
   padding: 3px 6px;
   font-size: 16px;
   cursor: pointer;
+`;
+
+export const StyledNavLink = styled(NavLink)`
+  text-decoration: none;
+  align-items: center;
+  padding: 5px 10px;
+  border-radius: 4px;
+  color: black;
+
+  &.active {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+  }
+  &:hover:not(.active) {
+    background-color: #edf4f2;
+  }
 `;

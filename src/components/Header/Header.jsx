@@ -1,5 +1,4 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
 import {
   AccountName,
   HeaderInfo,
@@ -7,6 +6,7 @@ import {
   HeaderNavBox,
   HeaderWrapper,
   LogoutButton,
+  StyledNavLink,
 } from './Header.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectIsLoggedIn, selectUser } from 'redux/auth/selectors';
@@ -27,16 +27,16 @@ export const Header = () => {
         <HeaderNavBox>
           <HeaderNav>
             <li>
-              <NavLink to="/contacts">PhoneBook</NavLink>
+              <StyledNavLink to="/contacts">PhoneBook</StyledNavLink>
             </li>
           </HeaderNav>
           {!isLggedIn && (
             <HeaderNav>
               <li>
-                <NavLink to="/login">Login</NavLink>
+                <StyledNavLink to="/login">Login</StyledNavLink>
               </li>
               <li>
-                <NavLink to="/register">Register</NavLink>
+                <StyledNavLink to="/register">Register</StyledNavLink>
               </li>
             </HeaderNav>
           )}

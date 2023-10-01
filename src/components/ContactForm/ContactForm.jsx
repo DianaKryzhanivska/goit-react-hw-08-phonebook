@@ -3,6 +3,7 @@ import { Form, Label, Button, Input } from './ContactForm.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectContacts } from 'redux/contactForm/selectors';
 import { addContactThunk } from 'redux/contactForm/operations';
+import { toast } from 'react-toastify';
 // import { toast } from 'react-toastify';
 
 export const ContactForm = () => {
@@ -25,13 +26,14 @@ export const ContactForm = () => {
     );
 
     if (isInContacts) {
-      alert(`Contact ${isInContacts.name} is already in Phonebook`);
+      toast.error(`Contact ${isInContacts.name} is already in Phonebook!`);
       setContactName('');
       setContactNumber('');
       return;
     }
 
     dispatch(addContactThunk(contact));
+    toast.success(`Contact ${contact.name} added!`);
     setContactName('');
     setContactNumber('');
   };

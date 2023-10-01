@@ -18,8 +18,8 @@ export const Login = () => {
     dispatch(loginThunk(data))
       .unwrap()
       .then(res => {
-        console.log(res);
-        toast.success(`Welcome! ${res.user.name}`);
+        // console.log(res);
+        toast.success(`Welcome, ${res.user.name}!`);
         // navigate('/contacts');
         navigate(location.state?.from ?? '/');
       })
