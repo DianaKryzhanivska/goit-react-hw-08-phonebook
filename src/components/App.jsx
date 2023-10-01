@@ -1,11 +1,24 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { Contacts, Home, Login, NotFound, Register } from 'pages';
 import { Layout } from './Layout';
 import { PrivateRoute } from './Routes/PrivateRoute';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectIsRefresh } from 'redux/auth/selectors';
+import { refreshThunk } from 'redux/auth/operations';
+import { Spinner } from './Spinner/Spinner';
 
 export const App = () => {
-  return (
+  const dispatch = useDispatch();
+  const isRefresh = useSelector(selectIsRefresh);
+
+  useEffect(() => {
+    dispatch(refreshThunk);
+  }, [dispatch]);
+
+  return isRefresh ? (
+    <Spinner />
+  ) : (
     <>
       <Routes>
         <Route path="/" element={<Layout />}>

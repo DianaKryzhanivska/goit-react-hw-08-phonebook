@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 // https://connections-api.herokuapp.com
 // axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
@@ -54,6 +55,25 @@ export const logoutThunk = createAsyncThunk(
       clearToken();
     } catch (error) {
       return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const refreshThunk = createAsyncThunk(
+  'refresh',
+  async (_, { rejectWithValue, getState }) => {
+    const savedToken = getState().auth.token;
+    if (!savedToken) {
+      toast.warning('Token does not exist');
+      return rejectWithValue('Token does not exist');
+    }
+    try {
+      setToken(savedToken);
+      const { data } = await goItApi.get('/users/current');
+      console.log(data);
+      return data;
+    } catch (error) {
+      console.log(error.message);
     }
   }
 );

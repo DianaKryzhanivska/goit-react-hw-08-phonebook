@@ -1,16 +1,18 @@
 import React from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { styled } from 'styled-components';
 import { useForm } from 'react-hook-form';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { loginThunk } from 'redux/auth/operations';
 import { toast } from 'react-toastify';
+import { selectIsLoggedIn } from 'redux/auth/selectors';
 
 export const Login = () => {
   const { handleSubmit, register } = useForm();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
+  const isLoggedIn = useSelector(selectIsLoggedIn);
 
   const submit = data => {
     dispatch(loginThunk(data))
@@ -23,6 +25,10 @@ export const Login = () => {
       })
       .catch(() => toast.error('Data is not valid'));
   };
+
+  if (isLoggedIn) {
+    return <Navigate to="/contacts" />;
+  }
 
   return (
     <StyledSection>
