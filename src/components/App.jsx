@@ -13,7 +13,7 @@ export const App = () => {
   const isRefresh = useSelector(selectIsRefresh);
 
   useEffect(() => {
-    dispatch(refreshThunk);
+    dispatch(refreshThunk());
   }, [dispatch]);
 
   return isRefresh ? (
