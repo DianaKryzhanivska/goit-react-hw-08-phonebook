@@ -16,7 +16,9 @@ export const App = () => {
     dispatch(refreshThunk());
   }, [dispatch]);
 
-  return !isRefresh ? (
+  return isRefresh ? (
+    <Spinner />
+  ) : (
     <>
       <Routes>
         <Route path="/" element={<Layout />}>
@@ -35,7 +37,5 @@ export const App = () => {
         </Route>
       </Routes>
     </>
-  ) : (
-    <Spinner />
   );
 };

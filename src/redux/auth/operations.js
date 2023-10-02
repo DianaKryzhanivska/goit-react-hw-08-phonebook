@@ -64,7 +64,7 @@ export const refreshThunk = createAsyncThunk(
   async (_, { rejectWithValue, getState }) => {
     const savedToken = getState().auth.token;
     if (!savedToken) {
-      toast.warning('Token does not exist');
+      // toast.warning('You need to log in or register');
       return rejectWithValue('Token does not exist');
     }
     try {
